@@ -121,6 +121,7 @@ export default class BrowserstackLauncherService implements Services.ServiceInst
 
                         if (!isUndefined(capability['bstack:options'].accessibility)) {
                             this._accessibilityAutomation ||= isTrue(capability['bstack:options'].accessibility)
+                            this.browserStackConfig.accessibility = this._accessibilityAutomation
                         } else if (isTrue(this._options.accessibility)) {
                             capability['bstack:options'].accessibility = (isTrue(this._options.accessibility))
                         }
@@ -135,6 +136,7 @@ export default class BrowserstackLauncherService implements Services.ServiceInst
                             (caps.capabilities as WebdriverIO.Capabilities)['bstack:options'] = { wdioService: BSTACK_SERVICE_VERSION }
                             if (!isUndefined((caps.capabilities as WebdriverIO.Capabilities)['browserstack.accessibility'])) {
                                 this._accessibilityAutomation ||= isTrue((caps.capabilities as WebdriverIO.Capabilities)['browserstack.accessibility'])
+                                this.browserStackConfig.accessibility = this._accessibilityAutomation
                             } else if (isTrue(this._options.accessibility)) {
                                 (caps.capabilities as WebdriverIO.Capabilities)['bstack:options'] = { wdioService: BSTACK_SERVICE_VERSION, accessibility: (isTrue(this._options.accessibility)) }
                             }
